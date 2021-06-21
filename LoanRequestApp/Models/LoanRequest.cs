@@ -9,6 +9,7 @@ namespace LoanRequestApp.Models
     public class LoanRequest
     {
         public int LoanRequestId { get; set; }
+        public int Status { get; set; }
         public string CompanyId { get; set; }
         public string CompanyName { get; set; }
         public decimal Amount { get; set; }
