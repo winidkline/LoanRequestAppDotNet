@@ -12,6 +12,8 @@ namespace LoanRequestApp.Models
 
         public DbSet<LoanRequest> LoanRequests { get; set; }
         public DbSet<LoanRequestAsset> LoanRequestAssets { get; set; }
+        public DbSet<LoanRequestComment> LoanRequestComments { get; set; }
+        public DbSet<LoanRequestFile> LoanRequestFiles { get; set; }
         public DbSet<LoanRequestAssetType> LoanRequestAssetTypes { get; set; }
     }
 }

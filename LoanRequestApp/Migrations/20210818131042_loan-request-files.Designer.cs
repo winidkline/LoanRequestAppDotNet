@@ -4,14 +4,16 @@ using LoanRequestApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LoanRequestApp.Migrations
 {
     [DbContext(typeof(LoansDbContext))]
-    partial class LoansDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210818131042_loan-request-files")]
+    partial class loanrequestfiles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -150,6 +152,9 @@ namespace LoanRequestApp.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Filename")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Filepath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsP080A")

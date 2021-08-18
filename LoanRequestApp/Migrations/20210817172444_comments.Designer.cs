@@ -4,14 +4,16 @@ using LoanRequestApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LoanRequestApp.Migrations
 {
     [DbContext(typeof(LoansDbContext))]
-    partial class LoansDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210817172444_comments")]
+    partial class comments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,32 +141,6 @@ namespace LoanRequestApp.Migrations
                     b.ToTable("LoanRequestComments");
                 });
 
-            modelBuilder.Entity("LoanRequestApp.Models.LoanRequestFile", b =>
-                {
-                    b.Property<int>("LoanRequestFileId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Approved")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Filename")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsP080A")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("LoanRequestId")
-                        .HasColumnType("int");
-
-                    b.HasKey("LoanRequestFileId");
-
-                    b.HasIndex("LoanRequestId");
-
-                    b.ToTable("LoanRequestFiles");
-                });
-
             modelBuilder.Entity("LoanRequestApp.Models.LoanRequestAsset", b =>
                 {
                     b.HasOne("LoanRequestApp.Models.LoanRequestAssetType", "loanRequestAssetType")
@@ -182,15 +158,6 @@ namespace LoanRequestApp.Migrations
                 {
                     b.HasOne("LoanRequestApp.Models.LoanRequest", null)
                         .WithMany("LoanRequestComments")
-                        .HasForeignKey("LoanRequestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("LoanRequestApp.Models.LoanRequestFile", b =>
-                {
-                    b.HasOne("LoanRequestApp.Models.LoanRequest", null)
-                        .WithMany("LoanRequestFiles")
                         .HasForeignKey("LoanRequestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

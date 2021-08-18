@@ -22,5 +22,7 @@ namespace LoanRequestApp.Models
         public string P080APath { get; set; }
         public string Notes { get; set; }
         public List<LoanRequestAsset> LoanRequestAssets { get; set; }
+        public List<LoanRequestComment> LoanRequestComments { get; set; }
+        public List<LoanRequestFile> LoanRequestFiles { get; set; }
     }
 }
